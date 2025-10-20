@@ -1,5 +1,9 @@
 # NEOM OS Changelog
 
+## [v2.3] - 2025-10-20 - GitHub Integration & Documentation
+Complete GitHub repository setup with professional documentation and open source infrastructure.
+→ [Full update details](../updates/update-v2.3-2025-10-20.md)
+
 ## [v1.0.1] - 2025-10-19 - Workspace Organization
 Complete workspace reorganization with proper version management and file structure.
 → [Full update details](../updates/update-v1.0.1-2025-10-19.md)
