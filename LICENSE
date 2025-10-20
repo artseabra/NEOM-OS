@@ -1,0 +1,79 @@
+NEOM OS - Dual License
+
+Copyright (c) 2025 Art Seabra
+
+NEOM OS is dual-licensed under the GNU General Public License v3.0 (GPL-3.0) 
+for non-commercial use and a Commercial License for commercial use.
+
+================================================================================
+FREE LICENSE - GNU GENERAL PUBLIC LICENSE v3.0
+================================================================================
+
+NEOM OS is free software: you can redistribute it and/or modify it under the 
+terms of the GNU General Public License as published by the Free Software 
+Foundation, either version 3 of the License, or (at your option) any later 
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT 
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with 
+this program. If not, see <https://www.gnu.org/licenses/>.
+
+WHO CAN USE THE FREE LICENSE:
+- Individuals for personal, non-commercial use
+- Educational institutions and students
+- Non-profit organizations
+- Open-source projects (that also use GPL-compatible licenses)
+- Research purposes
+
+RESTRICTIONS:
+- If you distribute NEOM OS or derivative works, you MUST:
+  * Provide the complete source code
+  * License your derivative work under GPL v3
+  * Include this license notice
+  * State any changes you made
+
+================================================================================
+COMMERCIAL LICENSE
+================================================================================
+
+If you are a commercial entity and any of the following apply, you MUST 
+obtain a Commercial License:
+
+COMMERCIAL LICENSE REQUIRED IF:
+1. Your organization has 10 or more employees, OR
+2. Your organization has annual revenue of $1,000,000 USD or more, OR
+3. You want to use NEOM OS in proprietary software without GPL obligations, OR
+4. You want to redistribute NEOM OS as part of a commercial product, OR
+5. You want to offer NEOM OS as a service for profit
+
+COMMERCIAL LICENSE BENEFITS:
+- Use NEOM OS without copyleft restrictions
+- Keep your modifications and extensions private
+- Embed in proprietary products
+- Redistribute without source code disclosure
+- Priority support and updates
+- Custom licensing terms available
+
+To purchase a Commercial License or inquire about pricing:
+- Email: art@seabra.com (replace with your actual contact)
+- Website: https://sn.ifth.is/art
+
+================================================================================
+CONTRIBUTOR LICENSE AGREEMENT
+================================================================================
+
+By contributing to NEOM OS, you agree that:
+1. You grant Art Seabra a perpetual, worldwide, non-exclusive, royalty-free 
+   license to use, reproduce, modify, and distribute your contributions under 
+   both the GPL v3 and Commercial License.
+2. You have the right to grant this license.
+3. Your contributions are your original work or you have rights to contribute.
+
+================================================================================
+
+For questions about licensing, contact: art@seabra.com
+
+Full GPL v3 text: https://www.gnu.org/licenses/gpl-3.0.en.html

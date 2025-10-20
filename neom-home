@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# NEOM OS Home
+# neom-home - Main menu and launcher
+
+# Source the emoticon library for consistency
+source ~/Documents/NEOM_OS/neom-emoticons
+
+# ANSI color codes
+GREEN='\033[38;2;0;255;65m'      # Matrix green
+DIM_GREEN='\033[38;2;0;180;45m'  # Dimmer green
+PURPLE='\033[38;2;135;91;225m'   # artsea purple #875BE1
+YELLOW='\033[38;2;255;232;31m'   # Star Wars yellow
+BLUE='\033[38;2;0;102;204m'      # Traditional blue for links
+CYAN='\033[38;2;0;255;255m'      # Cyan for neom-textart
+GRAY='\033[38;2;150;150;150m'    # Gray for footer
+BOLD='\033[1m'
+RESET='\033[0m'
+
+# Clear and show banner at top
+clear
+
+echo -e "${GREEN}"
+cat << "EOF"
+███╗   ██╗███████╗ ██████╗ ███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝
+EOF
+
+echo -e "${PURPLE}built by:${RESET}"
+echo -e "${PURPLE}"
+cat << "EOF"
+   ▄▀█ █▀█ ▀█▀ █▀ █▀▀ ▄▀█
+   █▀█ █▀▄ ░█░ ▄█ ██▄ █▀█
+EOF
+
+echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo -e "${GREEN}${BOLD}NEOM OS v1.0.0${RESET}"
+echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+echo -e "${BLUE}📖 Command Center: ${RESET}${GRAY}https://notion.so/ifthis/neomOS${RESET}"
+echo -e "${BLUE}📂 Documentation: ${RESET}${GRAY}~/Documents/NEOM_OS/docs/NEOM-OS-Documentation.md${RESET}"
+echo -e "${BLUE}📁 Project Folder: ${RESET}${GRAY}/Users/arthurseabra/Documents/NEOM_OS${RESET}"
+echo ""
+echo -e "${YELLOW}${BOLD}## NEOM OS${RESET}"
+echo ""
+echo "A terminal-based operating layer that transforms your workflow"
+echo "into a voice-first command center."
+echo ""
+echo "Built on Warp Terminal, triggered by Raycast shortcuts, and"
+echo "powered by AI. It's not an app — it's a toolkit for productivity."
+echo -e "${RESET}"
+echo ""
+echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+echo -e "${YELLOW}${BOLD}## Available Tools${RESET}"
+echo ""
+echo -e "${PURPLE}1) neom-transcriber v1.0.0${RESET}  ${GRAY}→  Voice-to-text transcription${RESET}"
+echo -e "${CYAN}2) neom-textart v0.01${RESET}  ${GRAY}→  Text styling (Coming soon)${RESET}"
+echo ""
+echo -e "${YELLOW}Select a tool:${RESET}"
+echo -n "Enter your choice (1 or 2): "
+read tool_choice
+
+case $tool_choice in
+    1)
+        echo ""
+        echo -e "${PURPLE}Launching neom-transcriber...${RESET}"
+        sleep 1
+        ~/Documents/NEOM_OS/neom-transcriber
+        ;;
+    2)
+        echo ""
+        echo -e "${CYAN}neom-textart is coming soon!${RESET}"
+        sleep 2
+        ;;
+    *)
+        echo ""
+        echo -e "${GRAY}Invalid choice. Exiting.${RESET}"
+        ;;
+esac
+
+echo ""
+echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo -e "${GRAY}Powered by Bash, SoX, Warp, Raycast, OpenAI, Notion & macOS${RESET}"
+echo -e "Built collaboratively by ${PURPLE}artsea${GRAY} & Raycast + Claude (Anthropic)${RESET}"
+echo -e "Version 1.0 • October 18, 2025${RESET}"

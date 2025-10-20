@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# NEOM OS Welcome Banner
+# A minimal banner for new Warp sessions.
+
+# Source the emoticon library for consistency
+source ~/Documents/NEOM_OS/neom-emoticons
+
+# ANSI color codes from the NEOM OS Design System
+GREEN='\033[38;2;0;255;65m'      # Matrix green
+DIM_GREEN='\033[38;2;0;180;45m'  # Dimmer green
+YELLOW='\033[38;2;255;232;31m'   # Star Wars yellow
+CYAN='\033[38;2;0;255;255m'      # Cyan for links/commands
+RESET='\033[0m'
+
+clear
+
+echo -e "${GREEN}"
+cat << "EOF"
+███╗   ██╗███████╗ ██████╗ ███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝
+EOF
+echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+echo -e "${YELLOW}NEOM OS active.${RESET}"
+echo ""
+echo -e "Type ${CYAN}neom-home${RESET} or press ${GREEN}Caps Lock + N${RESET} to launch the Command Center."
+echo ""

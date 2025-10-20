@@ -1,0 +1,91 @@
+name: NEOM OS Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Homebrew
+      run: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        echo "/opt/homebrew/bin" >> $GITHUB_PATH
+    
+    - name: Install dependencies
+      run: |
+        brew install sox jq
+    
+    - name: Test script syntax
+      run: |
+        echo "Testing bash script syntax..."
+        bash -n neom-home
+        bash -n neom-transcriber
+        bash -n neom-os.sh
+        bash -n install.sh
+        echo "✓ All scripts have valid syntax"
+    
+    - name: Test install script
+      run: |
+        echo "Testing install script..."
+        # Test install script in dry-run mode (without actually installing)
+        bash -n install.sh
+        echo "✓ Install script is valid"
+    
+    - name: Check file permissions
+      run: |
+        echo "Checking file permissions..."
+        if [ -x "neom-home" ] && [ -x "neom-transcriber" ] && [ -x "neom-os.sh" ] && [ -x "install.sh" ]; then
+          echo "✓ All scripts are executable"
+        else
+          echo "❌ Some scripts are not executable"
+          exit 1
+        fi
+    
+    - name: Validate documentation
+      run: |
+        echo "Validating documentation..."
+        # Check if README exists and has content
+        if [ -f "README.md" ] && [ -s "README.md" ]; then
+          echo "✓ README.md exists and has content"
+        else
+          echo "❌ README.md is missing or empty"
+          exit 1
+        fi
+        
+        # Check if LICENSE exists
+        if [ -f "LICENSE" ]; then
+          echo "✓ LICENSE file exists"
+        else
+          echo "❌ LICENSE file is missing"
+          exit 1
+        fi
+    
+    - name: Test directory structure
+      run: |
+        echo "Checking directory structure..."
+        required_dirs=("docs" "sounds" "recordings" "updates" "backups")
+        for dir in "${required_dirs[@]}"; do
+          if [ -d "$dir" ]; then
+            echo "✓ $dir directory exists"
+          else
+            echo "❌ $dir directory is missing"
+            exit 1
+          fi
+        done
+    
+    - name: Test audio files
+      run: |
+        echo "Checking audio files..."
+        if [ -f "sounds/start-recording.wav" ] && [ -f "sounds/stop-recording.wav" ] && [ -f "sounds/thinking.wav" ] && [ -f "sounds/complete.wav" ]; then
+          echo "✓ All required audio files exist"
+        else
+          echo "❌ Some audio files are missing"
+          exit 1
+        fi

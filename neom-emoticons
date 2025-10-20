@@ -1,0 +1,248 @@
+#!/bin/bash
+
+# NEOM OS - Emoticon Animation Library
+# Centralized emoticon system for consistent display across all NEOM OS tools
+# Version 1.0 - October 18, 2025
+
+# --- Configuration ---
+# Future: User-selectable language
+NEOM_LANG=${NEOM_LANG:-"en"}
+
+# Message strings by language
+declare -A NEOM_STRINGS
+NEOM_STRINGS[en_recording]="Recording..."
+NEOM_STRINGS[en_thinking]="Thinking..."
+NEOM_STRINGS[en_processing]="Processing..."
+NEOM_STRINGS[en_success]="Complete!"
+NEOM_STRINGS[en_error]="Error!"
+# Future: NEOM_STRINGS[es_recording]="Grabando..."
+
+# NEOM OS Branding Colors
+NEOM_PURPLE='\033[38;2;135;91;225m'  # #875BE1 - artsea purple
+NEOM_GREEN='\033[38;2;0;255;65m'     # Matrix green
+RESET='\033[0m'
+
+# --- Emoticon Collections ---
+
+# Thinking emoticons (for processing)
+NEOMOTICONS_THINKING=(
+    "  (^_^)    "
+    "  (^o^)    "
+    "  (^_~)    "
+    "  (o_o)    "
+    "  (O_O)    "
+    "  (-_-)    "
+    "  (>_<)    "
+    "  (o_o)    "
+)
+
+# Singing emoticons (for recording)
+NEOMOTICONS_SINGING=(
+    "  \\(^o^)/  "
+    "  (~o~)~   "
+    "  (^o^)    "
+    "  \\(^_^)/ "
+    "  ~(^o^)~  "
+    "  (^_^)    "
+)
+
+# Success emoticons
+NEOMOTICONS_SUCCESS=(
+    "  (^_^)    "
+    "  (^o^)    "
+    "  (^_^)    "
+    "  (^_^)    "
+)
+
+# Error emoticons
+NEOMOTICONS_ERROR=(
+    "  (>_<)    "
+    "  (T_T)    "
+    "  (x_x)    "
+    "  (>_<)    "
+)
+
+# --- Core Functions ---
+
+# Get terminal width for responsive layout
+get_terminal_width() {
+    local width=$(tput cols 2>/dev/null || echo "80")
+    echo $width
+}
+
+# Get random emoticon from specified array
+get_random_emoticon() {
+    local emoticon_array=$1
+    local index=$((RANDOM % ${#emoticon_array[@]}))
+    echo "${emoticon_array[$index]}"
+}
+
+# Get localized string
+get_localized_string() {
+    local key="${NEOM_LANG}_$1"
+    echo "${NEOM_STRINGS[$key]:-$1}"
+}
+
+# Display static emoticon with message (single line)
+neom_emoticon_show() {
+    local emoticon_type=${1:-"thinking"}
+    local message=${2:-""}
+    local emoticon_array=""
+    
+    case "$emoticon_type" in
+        "thinking")
+            emoticon_array="NEOMOTICONS_THINKING"
+            ;;
+        "singing")
+            emoticon_array="NEOMOTICONS_SINGING"
+            ;;
+        "success")
+            emoticon_array="NEOMOTICONS_SUCCESS"
+            ;;
+        "error")
+            emoticon_array="NEOMOTICONS_ERROR"
+            ;;
+        *)
+            emoticon_array="NEOMOTICONS_THINKING"
+            ;;
+    esac
+    
+    # Get emoticon
+    local emoticon=$(get_random_emoticon $emoticon_array)
+    
+    # Get terminal width and calculate layout
+    local width=$(get_terminal_width)
+    local emoticon_width=12
+    local message_width=$((width - emoticon_width - 4))
+    
+    # Truncate message if too long
+    if [ ${#message} -gt $message_width ]; then
+        message="${message:0:$((message_width-3))}..."
+    fi
+    
+    # Display formatted line
+    printf "\r\033[K${NEOM_PURPLE}${emoticon}${RESET} ${NEOM_GREEN}${message}${RESET}"
+}
+
+# Start background emoticon animation
+neom_emoticon_start() {
+    local emoticon_type=${1:-"thinking"}
+    local message=${2:-""}
+    local duration=${3:-0}  # 0 = infinite until stopped
+    
+    # Set default message if not provided
+    if [ -z "$message" ]; then
+        case "$emoticon_type" in
+            "thinking")
+                message=$(get_localized_string "thinking")
+                ;;
+            "singing")
+                message=$(get_localized_string "recording")
+                ;;
+            "processing")
+                message=$(get_localized_string "processing")
+                ;;
+            *)
+                message="Working..."
+                ;;
+        esac
+    fi
+    
+    # Start background animation
+    (
+        local start_time=$(date +%s)
+        while true; do
+            neom_emoticon_show "$emoticon_type" "$message"
+            sleep 0.5
+            
+            # Check duration limit if set
+            if [ $duration -gt 0 ]; then
+                local current_time=$(date +%s)
+                if [ $((current_time - start_time)) -ge $duration ]; then
+                    break
+                fi
+            fi
+        done
+    ) &
+    
+    # Store PID for cleanup
+    NEOM_EMOTICON_PID=$!
+    echo $NEOM_EMOTICON_PID
+}
+
+# Stop emoticon animation with final face
+neom_emoticon_stop() {
+    local final_type=${1:-"success"}
+    local final_message=${2:-""}
+    
+    # Kill background animation if running
+    if [ ! -z "$NEOM_EMOTICON_PID" ]; then
+        kill -TERM "$NEOM_EMOTICON_PID" 2>/dev/null
+        wait "$NEOM_EMOTICON_PID" 2>/dev/null
+        NEOM_EMOTICON_PID=""
+    fi
+    
+    # Show final emoticon
+    if [ -z "$final_message" ]; then
+        case "$final_type" in
+            "success")
+                final_message=$(get_localized_string "success")
+                ;;
+            "error")
+                final_message=$(get_localized_string "error")
+                ;;
+            *)
+                final_message="Done!"
+                ;;
+        esac
+    fi
+    
+    neom_emoticon_show "$final_type" "$final_message"
+    echo ""  # New line after final display
+}
+
+# Get single emoticon for custom use
+neom_emoticon_get() {
+    local emoticon_type=${1:-"thinking"}
+    local emoticon_array=""
+    
+    case "$emoticon_type" in
+        "thinking")
+            emoticon_array="NEOMOTICONS_THINKING"
+            ;;
+        "singing")
+            emoticon_array="NEOMOTICONS_SINGING"
+            ;;
+        "success")
+            emoticon_array="NEOMOTICONS_SUCCESS"
+            ;;
+        "error")
+            emoticon_array="NEOMOTICONS_ERROR"
+            ;;
+        *)
+            emoticon_array="NEOMOTICONS_THINKING"
+            ;;
+    esac
+    
+    get_random_emoticon $emoticon_array
+}
+
+# Cleanup function for background processes
+neom_emoticon_cleanup() {
+    if [ ! -z "$NEOM_EMOTICON_PID" ]; then
+        kill -TERM "$NEOM_EMOTICON_PID" 2>/dev/null
+        wait "$NEOM_EMOTICON_PID" 2>/dev/null
+        NEOM_EMOTICON_PID=""
+    fi
+}
+
+# Set up cleanup trap
+trap neom_emoticon_cleanup EXIT
+
+# Export functions for use in other scripts
+export -f neom_emoticon_show
+export -f neom_emoticon_start
+export -f neom_emoticon_stop
+export -f neom_emoticon_get
+export -f neom_emoticon_cleanup
+export -f get_localized_string
