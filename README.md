@@ -125,4 +125,4 @@ Built collaboratively by **artsea** & **Claude (Anthropic)**
 
 ---
 
-**Version 2.2** • **October 18, 2025**
+**Version 1.0.1** • **October 20, 2025**

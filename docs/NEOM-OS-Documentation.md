@@ -110,5 +110,5 @@ This is not a product. This is a toolkit. This is your OS.
 ---
 
 **Built by artsea & Claude**  
-**Version 2.2**  
+**Version 1.0.1**  
 **October 18, 2025**

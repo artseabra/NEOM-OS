@@ -1,20 +1,8 @@
 # NEOM OS Changelog
 
-## [v2.3] - 2025-10-20 - GitHub Integration & Documentation
-Complete GitHub repository setup with professional documentation and open source infrastructure.
-→ [Full update details](../updates/update-v2.3-2025-10-20.md)
-
-## [v1.0.1] - 2025-10-19 - Workspace Organization
-Complete workspace reorganization with proper version management and file structure.
-→ [Full update details](../updates/update-v1.0.1-2025-10-19.md)
-
-## [v2.2] - 2025-10-18 - UX Enhancement
-Complete UX redesign with animated neomoticons and delightful computing approach.
-→ [Full update details](../updates/update-v2.2-2025-10-18.md)
-
-## [v2.1] - 2025-10-18 - Performance Update
-Streamlined transcription with improved reliability.
-→ [Full update details](../updates/update-v2.1-2025-10-18.md)
+## [v1.0.1] - 2025-10-20 - GitHub Integration & Workspace Organization
+Combined update: workspace reorganization + GitHub setup with professional documentation.
+→ [Full update details](../updates/update-v1.0.1-2025-10-20.md)
 
 ## [v1.0] - 2025-10-18 - Launch
 Initial release with core transcription functionality.

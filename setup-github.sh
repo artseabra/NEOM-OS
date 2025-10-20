@@ -44,7 +44,7 @@ echo -e "${BLUE}   git remote add origin https://github.com/YOUR_USERNAME/NEOM-O
 echo ""
 echo -e "${BLUE}3. Add and commit all files:${RESET}"
 echo -e "${BLUE}   git add .${RESET}"
-echo -e "${BLUE}   git commit -m 'Initial commit: NEOM OS v2.2'${RESET}"
+echo -e "${BLUE}   git commit -m 'Initial commit: NEOM OS v1.0.1'${RESET}"
 echo ""
 echo -e "${BLUE}4. Push to GitHub:${RESET}"
 echo -e "${BLUE}   git branch -M main${RESET}"
