@@ -92,6 +92,8 @@ Text styling and font manipulation tool.
 - [Changelog](docs/CHANGELOG.md)
 - [Version Management](docs/NEOM-OS-Version-Management.md)
 - [Neomoticons](docs/NEOMOTICONS.md)
+- [Contributing Guidelines](docs/CONTRIBUTING.md)
+- [Warp AI Context](docs/WARP.md)
 
 ## 🏗️ Tech Stack
 
