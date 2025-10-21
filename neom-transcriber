@@ -4,7 +4,7 @@
 VERSION="1.0.0"
 
 # Config
-RECORDING_DIR="$HOME/Documents/NEOM_OS/recordings"
+RECORDING_DIR="$HOME/.neom-os/recordings"
 TIMESTAMP=$(date +"%Y-%m-%d_%H.%M.%S")
 OUTPUT_FILE="$RECORDING_DIR/recording-$TIMESTAMP.wav"
 mkdir -p "$RECORDING_DIR"
@@ -47,4 +47,4 @@ echo "Done! Copied to clipboard"
 
 # Cleanup and return
 rm -f "$OUTPUT_FILE"
-~/Documents/NEOM_OS/neom-home
+~/.neom-os/neom-home

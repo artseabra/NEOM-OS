@@ -31,12 +31,14 @@ The system follows a modular architecture with clear separation of concerns:
 ./install.sh
 
 # Make scripts executable (if needed)
-chmod +x neom-home neom-transcriber neom-os.sh neom-welcome install.sh
+chmod +x neom-home neom-transcriber neom-os.sh neom-welcome neom-warp-welcome install.sh
 
-# Set up environment variables
-export NEOM_OS_HOME="$(pwd)"
+# Set up environment variables (automatically handled by install.sh)
+export NEOM_OS_HOME="$HOME/.neom-os"
 export PATH="$NEOM_OS_HOME:$PATH"
-export OPENAI_API_KEY="your-api-key"
+
+# Configure API keys in .env file
+# Edit ~/.neom-os/.env with your actual API keys
 ```
 
 ### Testing
@@ -87,7 +89,6 @@ Scripts use consistent ANSI color coding:
 - `/docs/` - Documentation and version management
 - `/sounds/` - Audio feedback files (start, stop, thinking, complete)
 - `/recordings/` - Temporary audio recordings (auto-created)
-- `/backups/` - Script backups and previous versions
 - `/updates/` - Version update documentation
 - `/.github/` - GitHub Actions workflows and issue templates
 
@@ -105,9 +106,17 @@ Scripts use consistent ANSI color coding:
 - OpenAI API key for transcription services
 
 ### Environment Variables
-- `NEOM_OS_HOME` - Path to NEOM OS installation directory
-- `OPENAI_API_KEY` - Required for neom-transcriber functionality
+- `NEOM_OS_HOME` - Path to NEOM OS installation directory (default: `~/.neom-os`)
+- `OPENAI_API_KEY` - Required for neom-transcriber functionality (stored in `.env`)
+- `NOTION_DATABASE_ID` - Notion database ID for integrations (stored in `.env`)
+- `NOTION_API_KEY` - Notion API key for integrations (stored in `.env`)
 - `PATH` - Must include NEOM_OS_HOME for global script access
+
+### Security Configuration
+NEOM OS now uses a secure `.env` file for API keys:
+- API keys are stored in `~/.neom-os/.env` (gitignored)
+- Shell configuration sources the `.env` file automatically
+- No sensitive data in version control or shell profiles
 
 ## Integration Points
 
@@ -120,6 +129,8 @@ Scripts use consistent ANSI color coding:
 - Scripts designed specifically for Warp's terminal interface
 - Utilizes Warp's visual feedback capabilities (waveforms, colors)
 - All output formatted for terminal display with proper ANSI codes
+- Custom Warp welcome banner (`neom-warp-welcome`) displays on shell startup
+- Welcome banner shows "WARP" in ASCII block font with "powered by NEOM" tagline
 
 ### OpenAI API Integration
 - neom-transcriber uses Whisper API for voice-to-text

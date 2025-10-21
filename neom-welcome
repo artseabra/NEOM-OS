@@ -4,7 +4,7 @@
 # A minimal banner for new Warp sessions.
 
 # Source the emoticon library for consistency
-source ~/Documents/NEOM_OS/neom-emoticons
+source ~/.neom-os/neom-emoticons
 
 # ANSI color codes from the NEOM OS Design System
 GREEN='\033[38;2;0;255;65m'      # Matrix green

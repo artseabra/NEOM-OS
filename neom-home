@@ -4,7 +4,7 @@
 # neom-home - Main menu and launcher
 
 # Source the emoticon library for consistency
-source ~/Documents/NEOM_OS/neom-emoticons
+source ~/.neom-os/neom-emoticons
 
 # ANSI color codes
 GREEN='\033[38;2;0;255;65m'      # Matrix green
@@ -42,8 +42,8 @@ echo -e "${GREEN}${BOLD}NEOM OS v1.0.0${RESET}"
 echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 echo -e "${BLUE}📖 Command Center: ${RESET}${GRAY}https://notion.so/ifthis/neomOS${RESET}"
-echo -e "${BLUE}📂 Documentation: ${RESET}${GRAY}~/Documents/NEOM_OS/docs/NEOM-OS-Documentation.md${RESET}"
-echo -e "${BLUE}📁 Project Folder: ${RESET}${GRAY}/Users/arthurseabra/Documents/NEOM_OS${RESET}"
+echo -e "${BLUE}📂 Documentation: ${RESET}${GRAY}~/.neom-os/docs/NEOM-OS-Documentation.md${RESET}"
+echo -e "${BLUE}📁 Project Folder: ${RESET}${GRAY}~/.neom-os${RESET}"
 echo ""
 echo -e "${YELLOW}${BOLD}## NEOM OS${RESET}"
 echo ""
@@ -70,7 +70,7 @@ case $tool_choice in
         echo ""
         echo -e "${PURPLE}Launching neom-transcriber...${RESET}"
         sleep 1
-        ~/Documents/NEOM_OS/neom-transcriber
+        ~/.neom-os/neom-transcriber
         ;;
     2)
         echo ""

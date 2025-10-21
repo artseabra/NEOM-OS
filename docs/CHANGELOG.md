@@ -1,5 +1,9 @@
 # NEOM OS Changelog
 
+## [v1.0.2] - 2025-10-20 - Relocation & Security Enhancement
+Major update: relocated to ~/.neom-os, custom Warp banner, secure API key management.
+→ [Full update details](../updates/update-v1.0.2-2025-10-20.md)
+
 ## [v1.0.1] - 2025-10-20 - GitHub Integration & Workspace Organization
 Combined update: workspace reorganization + GitHub setup with professional documentation.
 → [Full update details](../updates/update-v1.0.1-2025-10-20.md)

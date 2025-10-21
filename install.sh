@@ -90,8 +90,8 @@ echo ""
 # Set up environment variables
 echo -e "${YELLOW}Setting up environment...${RESET}"
 
-# Get the directory where this script is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Set NEOM_OS_HOME to the standard location
+NEOM_OS_HOME="$HOME/.neom-os"
 
 # Add NEOM_OS_HOME to shell profile
 SHELL_PROFILE=""
@@ -108,7 +108,7 @@ if [ -n "$SHELL_PROFILE" ]; then
     if ! grep -q "NEOM_OS_HOME" "$SHELL_PROFILE"; then
         echo "" >> "$SHELL_PROFILE"
         echo "# NEOM OS Configuration" >> "$SHELL_PROFILE"
-        echo "export NEOM_OS_HOME=\"$SCRIPT_DIR\"" >> "$SHELL_PROFILE"
+        echo "export NEOM_OS_HOME=\"$NEOM_OS_HOME\"" >> "$SHELL_PROFILE"
         echo "export PATH=\"\$NEOM_OS_HOME:\$PATH\"" >> "$SHELL_PROFILE"
         echo -e "${GREEN}✓ Added NEOM_OS_HOME to $SHELL_PROFILE${RESET}"
     else
@@ -125,8 +125,24 @@ chmod +x "$SCRIPT_DIR/neom-welcome"
 echo -e "${GREEN}✓ Scripts made executable${RESET}"
 
 # Create recordings directory
-mkdir -p "$SCRIPT_DIR/recordings"
+mkdir -p "$NEOM_OS_HOME/recordings"
 echo -e "${GREEN}✓ Created recordings directory${RESET}"
+
+# Create .env file if it doesn't exist
+if [ ! -f "$NEOM_OS_HOME/.env" ]; then
+    cat > "$NEOM_OS_HOME/.env" << 'EOF'
+# NEOM OS Environment Variables
+# This file contains sensitive API keys and should not be committed to git
+
+export OPENAI_API_KEY="your-openai-api-key-here"
+export NOTION_DATABASE_ID="your-notion-database-id-here"
+export NOTION_API_KEY="your-notion-api-key-here"
+EOF
+    echo -e "${GREEN}✓ Created .env file template${RESET}"
+    echo -e "${YELLOW}⚠️  Please edit $NEOM_OS_HOME/.env with your actual API keys${RESET}"
+else
+    echo -e "${GREEN}✓ .env file already exists${RESET}"
+fi
 
 # Check for OpenAI API key
 echo ""
