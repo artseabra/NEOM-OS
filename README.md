@@ -33,7 +33,7 @@ NEOM OS is a custom environment built on Warp Terminal, triggered by Raycast sho
 
 ## 🛠️ Tools
 
-### neom-transcriber v1.0.3
+### neom-transcriber v1.0.4
 Voice-to-text with enhanced recording controls and dual-format clipboard output.
 
 **Features:**

@@ -1,5 +1,9 @@
 # NEOM OS Changelog
 
+## [v1.0.4] - 2025-10-21 - Enhanced Recording Controls
+Feature update: intuitive keyboard controls, pause/resume, dynamic UI feedback.
+→ [Full update details](../updates/update-v1.0.4-2025-10-21.md)
+
 ## [v1.0.3] - 2025-10-20 - API Key Loading & Script Reliability
 Micro update: automatic environment loading, fixed script reliability, improved user experience.
 → [Full update details](../updates/update-v1.0.3-2025-10-20.md)

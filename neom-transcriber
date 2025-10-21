@@ -1,7 +1,7 @@
 #!/bin/zsh
-# NEOM Transcriber v1.0.3 - Enhanced Controls
+# NEOM Transcriber v1.0.4 - Enhanced Controls
 # Recording with pause/resume, cancel, and dynamic UI
-VERSION="1.0.3"
+VERSION="1.0.4"
 
 # Load environment variables
 if [ -f "$HOME/.neom-os/.env" ]; then

@@ -41,7 +41,7 @@ The breakthrough: Warp could be the visual interface, Raycast the launcher, and 
 ### n/home
 Startup banner. Your OS greeting.
 
-### n/transcriber v1.0.3
+### n/transcriber v1.0.4
 Voice-to-text with enhanced recording controls and dual-format clipboard output.
 
 **Features:**

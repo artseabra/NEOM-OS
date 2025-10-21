@@ -28,7 +28,7 @@ EOF
 echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 echo -e "${PURPLE}powered by NEOM${RESET}"
-echo -e "${YELLOW}v1.0.3${RESET}"
+echo -e "${YELLOW}v1.0.4${RESET}"
 echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 echo -e "Type ${CYAN}neom-home${RESET} or press ${GREEN}Caps Lock + N${RESET} to launch the Command Center."
