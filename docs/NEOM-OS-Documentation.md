@@ -41,7 +41,7 @@ The breakthrough: Warp could be the visual interface, Raycast the launcher, and 
 ### n/home
 Startup banner. Your OS greeting.
 
-### n/transcriber v1.0.0
+### n/transcriber v1.0.3
 Voice-to-text with dual-format clipboard output. Enhanced UX with animated feedback.
 
 **Features:**
@@ -52,7 +52,7 @@ Voice-to-text with dual-format clipboard output. Enhanced UX with animated feedb
 - NEOM OS branding during processing
 - Word count and format confirmation
 
-**v1.0.0 Features:**
+**v1.0.3 Features:**
 - **Neomoticons System**: Animated ASCII faces during processing
 - **Enhanced Recording**: SoX waveform + animated singing emoticons
 - **Smart Error Handling**: Context-aware error messages with solutions
