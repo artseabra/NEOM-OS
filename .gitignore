@@ -14,7 +14,10 @@
 
 # Recordings (user-generated content)
 recordings/
-*.wav
+# Allow sounds/ directory for project audio files
+!sounds/
+!sounds/*.wav
+# But ignore other audio files
 *.mp3
 *.m4a
 *.aac
