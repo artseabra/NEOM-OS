@@ -64,7 +64,7 @@ echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━�
 echo ""
 echo -e "${YELLOW}${BOLD}## Available Tools${RESET}"
 echo ""
-echo -e "${PURPLE}1) neom-transcriber v1.0.0${RESET}  ${GRAY}→  Voice-to-text transcription${RESET}"
+echo -e "${PURPLE}1) neom-transcriber v1.0.3${RESET}  ${GRAY}→  Voice-to-text transcription${RESET}"
 echo -e "${CYAN}2) neom-textart v0.01${RESET}  ${GRAY}→  Text styling (Coming soon)${RESET}"
 echo -e "${WHITE}0) Back to Warp Welcome${RESET}  ${GRAY}←  Return to neom-warp-welcome${RESET}"
 echo ""

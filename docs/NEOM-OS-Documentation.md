@@ -42,15 +42,22 @@ The breakthrough: Warp could be the visual interface, Raycast the launcher, and 
 Startup banner. Your OS greeting.
 
 ### n/transcriber v1.0.3
-Voice-to-text with dual-format clipboard output. Enhanced UX with animated feedback.
+Voice-to-text with enhanced recording controls and dual-format clipboard output.
 
 **Features:**
 - 10-minute recording limit with audio feedback
+- **Enhanced Controls**: ENTER to transcribe, ESC to cancel, SPACE to pause/resume
+- **Dynamic UI**: Instructions change based on recording state
 - Custom sound effects (start, stop, thinking, complete)
 - Dual-format output: Plain Text or Notion AI-ready
 - Interactive menu with visual formatting
 - NEOM OS branding during processing
 - Word count and format confirmation
+
+**Recording Controls:**
+- **ENTER**: Stop recording and transcribe with OpenAI
+- **ESC**: Cancel recording, delete audio file, return to menu
+- **SPACE**: Pause/resume recording with dynamic UI feedback
 
 **v1.0.3 Features:**
 - **Neomoticons System**: Animated ASCII faces during processing

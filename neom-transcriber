@@ -1,7 +1,7 @@
 #!/bin/zsh
-# NEOM Transcriber v1.0.0 - Barebones
-# Simple recording + Whisper transcription
-VERSION="1.0.0"
+# NEOM Transcriber v1.0.3 - Enhanced Controls
+# Recording with pause/resume, cancel, and dynamic UI
+VERSION="1.0.3"
 
 # Load environment variables
 if [ -f "$HOME/.neom-os/.env" ]; then
@@ -15,12 +15,55 @@ OUTPUT_FILE="$RECORDING_DIR/recording-$TIMESTAMP.wav"
 mkdir -p "$RECORDING_DIR"
 
 # Record
-echo "Recording... Press any key to stop"
+echo "Recording..."
+echo "Press ENTER to stop and transcribe | ESC to cancel | SPACE to pause"
 sox -d -b 16 "$OUTPUT_FILE" trim 0 600 &
 REC_PID=$!
-read -s -k 1
-kill -INT "$REC_PID" 2>/dev/null
-wait "$REC_PID" 2>/dev/null
+
+# State management
+is_paused=false
+recording_active=true
+
+# Key detection loop
+while [ "$recording_active" = true ]; do
+    read -s -k 1 key
+    case $key in
+        $'\n'|$'\r')  # ENTER - Stop and transcribe
+            echo ""
+            echo "Stopping recording..."
+            kill -INT "$REC_PID" 2>/dev/null
+            wait "$REC_PID" 2>/dev/null
+            recording_active=false
+            ;;
+        $'\e')        # ESC - Cancel
+            echo ""
+            echo "Cancelling recording..."
+            kill -KILL "$REC_PID" 2>/dev/null
+            wait "$REC_PID" 2>/dev/null
+            rm -f "$OUTPUT_FILE"
+            echo "Recording cancelled."
+            ~/.neom-os/neom-home
+            exit 0
+            ;;
+        ' ')          # SPACE - Pause/Resume
+            if [ "$is_paused" = false ]; then
+                # Pause
+                kill -STOP "$REC_PID" 2>/dev/null
+                is_paused=true
+                echo ""
+                echo "Recording paused..."
+                echo "Press SPACE to resume | ENTER to stop and transcribe | ESC to cancel"
+            else
+                # Resume
+                kill -CONT "$REC_PID" 2>/dev/null
+                is_paused=false
+                echo ""
+                echo "Recording resumed..."
+                echo "Press ENTER to stop and transcribe | ESC to cancel | SPACE to pause"
+            fi
+            ;;
+    esac
+done
 
 # Validate
 if [ ! -f "$OUTPUT_FILE" ] || [ ! -s "$OUTPUT_FILE" ]; then
