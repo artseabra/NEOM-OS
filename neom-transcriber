@@ -3,6 +3,11 @@
 # Simple recording + Whisper transcription
 VERSION="1.0.0"
 
+# Load environment variables
+if [ -f "$HOME/.neom-os/.env" ]; then
+    source "$HOME/.neom-os/.env"
+fi
+
 # Config
 RECORDING_DIR="$HOME/.neom-os/recordings"
 TIMESTAMP=$(date +"%Y-%m-%d_%H.%M.%S")

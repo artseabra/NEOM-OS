@@ -118,10 +118,11 @@ fi
 
 # Make scripts executable
 echo -e "${YELLOW}Setting up scripts...${RESET}"
-chmod +x "$SCRIPT_DIR/neom-home"
-chmod +x "$SCRIPT_DIR/neom-transcriber"
-chmod +x "$SCRIPT_DIR/neom-os.sh"
-chmod +x "$SCRIPT_DIR/neom-welcome"
+chmod +x "$NEOM_OS_HOME/neom-home"
+chmod +x "$NEOM_OS_HOME/neom-transcriber"
+chmod +x "$NEOM_OS_HOME/neom-os.sh"
+chmod +x "$NEOM_OS_HOME/neom-welcome"
+chmod +x "$NEOM_OS_HOME/neom-warp-welcome"
 echo -e "${GREEN}✓ Scripts made executable${RESET}"
 
 # Create recordings directory

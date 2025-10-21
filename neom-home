@@ -3,6 +3,11 @@
 # NEOM OS Home
 # neom-home - Main menu and launcher
 
+# Load environment variables
+if [ -f "$HOME/.neom-os/.env" ]; then
+    source "$HOME/.neom-os/.env"
+fi
+
 # Source the emoticon library for consistency
 source ~/.neom-os/neom-emoticons
 
@@ -14,6 +19,7 @@ YELLOW='\033[38;2;255;232;31m'   # Star Wars yellow
 BLUE='\033[38;2;0;102;204m'      # Traditional blue for links
 CYAN='\033[38;2;0;255;255m'      # Cyan for neom-textart
 GRAY='\033[38;2;150;150;150m'    # Gray for footer
+WHITE='\033[38;2;255;255;255m'   # White for back option
 BOLD='\033[1m'
 RESET='\033[0m'
 
@@ -38,12 +44,12 @@ cat << "EOF"
 EOF
 
 echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "${GREEN}${BOLD}NEOM OS v1.0.0${RESET}"
+echo -e "${YELLOW}${BOLD}NEOM OS v1.0.2${RESET}"
 echo -e "${DIM_GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
-echo -e "${BLUE}📖 Command Center: ${RESET}${GRAY}https://notion.so/ifthis/neomOS${RESET}"
-echo -e "${BLUE}📂 Documentation: ${RESET}${GRAY}~/.neom-os/docs/NEOM-OS-Documentation.md${RESET}"
-echo -e "${BLUE}📁 Project Folder: ${RESET}${GRAY}~/.neom-os${RESET}"
+echo -e "${GRAY}📖 Command Center: ${RESET}${BLUE}https://notion.so/ifthis/neomOS${RESET}"
+echo -e "${GRAY}📂 Documentation: ${RESET}${BLUE}~/.neom-os/docs/NEOM-OS-Documentation.md${RESET}"
+echo -e "${GRAY}📁 Project Folder: ${RESET}${BLUE}~/.neom-os${RESET}"
 echo ""
 echo -e "${YELLOW}${BOLD}## NEOM OS${RESET}"
 echo ""
@@ -60,12 +66,19 @@ echo -e "${YELLOW}${BOLD}## Available Tools${RESET}"
 echo ""
 echo -e "${PURPLE}1) neom-transcriber v1.0.0${RESET}  ${GRAY}→  Voice-to-text transcription${RESET}"
 echo -e "${CYAN}2) neom-textart v0.01${RESET}  ${GRAY}→  Text styling (Coming soon)${RESET}"
+echo -e "${WHITE}0) Back to Warp Welcome${RESET}  ${GRAY}←  Return to neom-warp-welcome${RESET}"
 echo ""
 echo -e "${YELLOW}Select a tool:${RESET}"
-echo -n "Enter your choice (1 or 2): "
+echo -n "Enter your choice (1, 2, or 0): "
 read tool_choice
 
 case $tool_choice in
+    0)
+        echo ""
+        echo -e "${WHITE}Returning to Warp Welcome...${RESET}"
+        sleep 1
+        ~/.neom-os/neom-warp-welcome
+        ;;
     1)
         echo ""
         echo -e "${PURPLE}Launching neom-transcriber...${RESET}"
